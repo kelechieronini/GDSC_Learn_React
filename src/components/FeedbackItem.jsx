@@ -1,22 +1,25 @@
+import React, {useState} from 'react'
 import Card from "../shared/Card";
 import { FaTimes } from 'react-icons/fa'
+import ConfirmModal from './ConfirmModal';
 
-function FeedbackItem({ item, feedback, setFeedback }) {
+const FeedbackItem = ({ item, feedback, setFeedback }) => {
 const handleDelete = (id) => {
   setFeedback(() => feedback.filter((arr) => arr.id !== id));
 }
 
-  return (
+ const [confirmContainer, showConfirmContainer] = useState('')
+
+  return(
     <Card className="card">
       <div className="num-display">{item.rating}</div>
-      <button className="close" onClick={() => handleDelete(item.id)}>
+      <button className="close" onClick={() => showConfirmContainer(item.id)}>
         <FaTimes color='blue'/>
       </button>
       <div className="text-display">{item.text}</div>
-    
+      {confirmContainer === item.id && <ConfirmModal item={item} handleDelete={handleDelete} showConfirmContainer={showConfirmContainer} />}
     </Card>
-    
-  );
+  )
 }
 
 export default FeedbackItem;
