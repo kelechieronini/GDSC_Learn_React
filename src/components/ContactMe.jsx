@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Card from "../shared/Card";
 
 const ContactMe = () => {
   return (
