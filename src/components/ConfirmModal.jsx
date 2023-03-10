@@ -11,7 +11,7 @@ const ConfirmModal = ({item, handleDelete, showConfirmContainer}) => {
           <button className="yes" onClick={() => handleDelete(item.id)}>
             Yes
           </button>
-          <button className="no" onClick={() => showConfirmContainer('')}>No</button>
+          <button className="no" onClick={() => showConfirmContainer(false)}>No</button>
         </div>
       </div>
     </div>
